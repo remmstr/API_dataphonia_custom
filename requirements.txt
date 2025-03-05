@@ -1,0 +1,4 @@
+
+requests
+getconf
+boto3

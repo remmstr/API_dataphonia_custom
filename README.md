@@ -2,6 +2,26 @@
 
 L'API utilisée pour l'application Dataphonia est une [API Rest](https://fr.wikipedia.org/wiki/Representational_state_transfer). Elle peut aussi bien être appelée depuis l'application Dataphonia que depuis un script Python.
 
+## Rémi -- Configuration & Lancement du code
+
+
+Sur macOS et Linux :
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 main.py
+```
+
+Sur Windows :
+```bash
+python3 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python3 main.py
+```
+
+
 ## Utilisation de l'API
 
 ### Principes généraux
