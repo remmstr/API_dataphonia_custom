@@ -7,12 +7,12 @@ def afficher_metadonnees(client):
         print("Aucun projet trouvé.")
         return
     
-    print("Liste des projets disponibles:")
+    print("\nListe des projets disponibles:")
     for i, project in enumerate(projects):
         print(f"{i + 1}. {project['name']} (ID: {project['id']})")
     
     try:
-        project_index = int(input("Sélectionnez un projet (numéro) : ")) - 1
+        project_index = int(input("\nSélectionnez un projet (numéro) : ")) - 1
         if project_index < 0 or project_index >= len(projects):
             print("Sélection invalide.")
             return
@@ -26,7 +26,7 @@ def afficher_metadonnees(client):
         print("Aucun fichier trouvé pour ce projet.")
         return
     
-    print("Liste des fichiers disponibles:")
+    print("\nListe des fichiers disponibles:")
     for i, file in enumerate(files):
         print(f"{i + 1}. {file['name']} (ID: {file['id']})")
     
@@ -45,70 +45,40 @@ def afficher_metadonnees(client):
         print(f"Aucune métadonnée disponible pour {file_selected['name']}.")
         return
     
-    print(f"Méta-données du fichier {file_selected['name']}:")
+    print(f"\nMéta-données du fichier {file_selected['name']}:")
     for key, value in metadata.items():
         print(f"{key}: {value}")
 
 def uploader_fichier(client):
-    projects = client.get_all_projects()
-    if not projects:
-        print("Aucun projet trouvé.")
-        return
+    """Upload un fichier directement vers 'super-mega-projet-de-test' (ID: 55)."""
     
-    print("Liste des projets disponibles:")
-    for i, project in enumerate(projects):
-        print(f"{i + 1}. {project['name']} (ID: {project['id']})")
-    
-    try:
-        project_index = int(input("Sélectionnez un projet (numéro) : ")) - 1
-        if project_index < 0 or project_index >= len(projects):
-            print("Sélection invalide.")
-            return
-    except ValueError:
-        print("Entrée invalide. Veuillez entrer un numéro valide.")
-        return
-    
-    project_id = projects[project_index]['id']
+    project_id = 55  # ID du projet "super-mega-projet-de-test"
     file_path = input("Entrez le chemin du fichier à uploader : ")
+    
     if not os.path.exists(file_path):
         print("Le fichier spécifié n'existe pas.")
         return
     
     try:
-        response = client.upload_file(project_id, file_path)
+        response = client.upload_file_1( file_path)
         if response:
-            print("Fichier uploadé avec succès.")
+            print("Fichier uploadé avec succès dans 'super-mega-projet-de-test'.")
         else:
             print("Échec de l'upload.")
     except PermissionError:
         print("Erreur de permission. Vérifiez vos droits d'accès au fichier.")
 
 def telecharger_fichier(client):
-    projects = client.get_all_projects()
-    if not projects:
-        print("Aucun projet trouvé.")
-        return
+    """Télécharge un fichier directement depuis le projet 'super-mega-projet-de-test' (ID: 55)."""
     
-    print("Liste des projets disponibles:")
-    for i, project in enumerate(projects):
-        print(f"{i + 1}. {project['name']} (ID: {project['id']})")
+    project_id = 55  # ID du projet "super-mega-projet-de-test"
     
-    try:
-        project_index = int(input("Sélectionnez un projet (numéro) : ")) - 1
-        if project_index < 0 or project_index >= len(projects):
-            print("Sélection invalide.")
-            return
-    except ValueError:
-        print("Entrée invalide. Veuillez entrer un numéro valide.")
-        return
-    
-    project_id = projects[project_index]['id']
     all_files = client.get_all_files(project_id)
     if not all_files:
         print("Aucun fichier disponible pour le téléchargement.")
         return
     
-    print("Liste des fichiers disponibles pour téléchargement:")
+    print("\nListe des fichiers disponibles pour téléchargement dans 'super-mega-projet-de-test' (seul endroit avec accès):")
     for i, file in enumerate(all_files):
         print(f"{i + 1}. {file['name']}")
     
@@ -134,14 +104,13 @@ def telecharger_fichier(client):
         print("Erreur: Chemin de sauvegarde invalide.")
 
 def main():
-
     client = Dataphonia()
     
     while True:
         print("\n---------------------- Menu --------------------------")
         print("1. Afficher les métadonnées d'un fichier")
         print("2. Uploader un fichier")
-        print("3. Télécharger un fichier")
+        print("3. Télécharger un fichier depuis 'super-mega-projet-de-test'")
         print("4. Quitter")
         
         choix = input("Choisissez une option : ")
