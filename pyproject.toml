@@ -9,13 +9,16 @@ authors = [{ name = "Rémi Mustière", email = "remi.mustiere@biophonia.fr" }]
 dependencies = [
     "numpy",
     "pandas",
-    "requests"
+    "requests",
     "getconf",
     "boto3",
     "s3transfer",
     "botocore",
     "dotenv",
+    "tqdm"
 ]
+
+dynamic = ["version"]
 
 [tool.setuptools]
 packages = ["API_dataphonia_custom"]

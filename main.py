@@ -1,7 +1,7 @@
 import os
 
-from dataphonia import Dataphonia
-from utils import choisir_projet, choisir_fichier_dans_projet, normalize_bucket_name
+from API_dataphonia_custom.dataphonia import Dataphonia
+from API_dataphonia_custom.utils import choisir_projet, choisir_fichier_dans_projet, normalize_bucket_name
 
 
 
