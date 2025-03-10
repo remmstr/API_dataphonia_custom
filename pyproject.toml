@@ -4,13 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "API_dataphonia_custom"
-version = "0.1.0"
 description = "Ma librairie personnalisée"
-authors = [{ name = "Ton Nom", email = "ton.email@example.com" }]
+authors = [{ name = "Rémi Mustière", email = "remi.mustiere@biophonia.fr" }]
 dependencies = [
     "numpy",
-    "pandas"
+    "pandas",
+    "requests"
+    "getconf",
+    "boto3",
+    "s3transfer",
+    "botocore",
+    "dotenv",
 ]
 
 [tool.setuptools]
 packages = ["API_dataphonia_custom"]
+
+[project.urls]
+homepage = "https://biophonia.fr/"
