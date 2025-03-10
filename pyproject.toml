@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "API_dataphonia_custom"
+version = "0.1.0"
+description = "Ma librairie personnalisée"
+authors = [{ name = "Ton Nom", email = "ton.email@example.com" }]
+dependencies = [
+    "numpy",
+    "pandas"
+]
+
+[tool.setuptools]
+packages = ["API_dataphonia_custom"]
