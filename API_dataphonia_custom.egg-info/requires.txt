@@ -1,9 +1,0 @@
-numpy
-pandas
-requests
-getconf
-boto3
-s3transfer
-botocore
-dotenv
-tqdm
