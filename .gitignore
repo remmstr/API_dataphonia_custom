@@ -1,0 +1,36 @@
+# Environnements virtuels
+.venv/
+venv/
+
+# Fichiers de construction et d'installation
+build/
+dist/
+*.egg-info/
+*.whl
+__pycache__/
+**/__pycache__/
+.DS_Store
+**.DS_Store
+
+# Cache des tests (pytest)
+.pytest_cache/
+
+# Configuration des IDEs
+.vscode/
+.idea/
+
+# Fichiers macOS inutiles
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Fichiers spécifiques à GitHub Actions et CI/CD
+.github/
+
+# Logs et fichiers temporaires
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.cache
