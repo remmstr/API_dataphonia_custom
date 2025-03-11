@@ -98,30 +98,48 @@ def telecharger_fichier(client):
         print("❌ Erreur: Chemin de sauvegarde invalide.")
 
 
+def telecharger_tout(client):
+    """Télécharge tous les fichiers d'un projet sélectionné."""
+    project_id, bucket_name = choisir_projet(client)
+    if not project_id:
+        return
+
+    save_dir = "downloads"
+    os.makedirs(save_dir, exist_ok=True)
+
+    # Récupérer tous les fichiers du projet
+    files = client.get_all_files(project_id)
+
+    if not files:
+        print("❌ Aucun fichier à télécharger dans ce projet.")
+        return
+
+    print(f"📥 Téléchargement de {len(files)} fichiers depuis le projet {project_id}...")
+
+    for file_info in files:
+        file_name = file_info["name"]
+        save_path = os.path.join(save_dir, file_name)
+
+        try:
+            if client.download_file(project_id, bucket_name, file_name, save_path):
+                print(f"✅ Fichier téléchargé : {save_path}")
+            else:
+                print(f"❌ Échec du téléchargement : {file_name}")
+
+        except FileNotFoundError:
+            print(f"❌ Erreur : Impossible de sauvegarder {file_name}")
+
+    print("🎉 Téléchargement terminé !")
+
+
+
+
 def main():
-    """Menu principal"""
+
+    print("CHOIX DE FICHIERS A TELECHARGER POUR PRE-ANALYSE.")
     client = Dataphonia()  # Connexion gérée dans `dataphonia.py`
 
-    while True:
-        print("\n---------------------- Menu --------------------------")
-        print("1. Afficher les métadonnées d'un fichier")
-        print("2. Uploader un fichier ou un dossier")
-        print("3. Télécharger un fichier")
-        print("4. Quitter")
-
-        choix = input("Choisissez une option : ")
-        if choix == "1":
-            afficher_metadonnees(client)
-        elif choix == "2":
-            uploader_fichier(client)
-        elif choix == "3":
-            telecharger_fichier(client)
-        elif choix == "4":
-            print("👋 Au revoir!")
-            break
-        else:
-            print("❌ Option invalide, veuillez réessayer.")
-
+    telecharger_tout(client)
 
 if __name__ == "__main__":
     main()
