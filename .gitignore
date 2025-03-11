@@ -11,6 +11,7 @@ __pycache__/
 **/__pycache__/
 .DS_Store
 **.DS_Store
+.env
 
 # Cache des tests (pytest)
 .pytest_cache/
@@ -23,6 +24,7 @@ __pycache__/
 .DS_Store
 .AppleDouble
 .LSOverride
+API_dataphonia_custom/API_dataphonia_custom.egg-info/
 
 # Fichiers spécifiques à GitHub Actions et CI/CD
 .github/
