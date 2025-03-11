@@ -1,0 +1,15 @@
+Metadata-Version: 2.2
+Name: API_dataphonia_custom
+Version: 0.0.0
+Summary: Ma librairie personnalisée
+Author-email: Rémi Mustière <remi.mustiere@biophonia.fr>
+Project-URL: homepage, https://biophonia.fr/
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: getconf
+Requires-Dist: boto3
+Requires-Dist: s3transfer
+Requires-Dist: botocore
+Requires-Dist: dotenv
+Requires-Dist: tqdm
